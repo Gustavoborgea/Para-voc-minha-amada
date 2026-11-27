@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ana Júlia 💙</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #071426, #102d4c, #071426);
+  font-family: Georgia, serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  overflow-x: hidden;
+}
+
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 430px;
+}
+
+h1 {
+  color: #c5e3ff;
+  margin-bottom: 12px;
+  font-size: 32px;
+}
+
+.subtitle {
+  color: #d4eaff;
+  margin-bottom: 45px;
+  font-style: italic;
+}
+
+.envelope {
+  width: 290px;
+  height: 190px;
+  background: #b9dcff;
+  margin: auto;
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 12px 40px #0008;
+  transition: transform .4s;
+}
+
+.envelope:hover {
+  transform: translateY(-6px);
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 145px solid transparent;
+  border-right: 145px solid transparent;
+  border-top: 110px solid #8fc5f5;
+  z-index: 3;
+}
+
+.envelope::after {
+  content: "💙";
+  position: absolute;
+  top: 112px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 27px;
+  z-index: 4;
+}
+
+.envelope-name {
+  position: absolute;
+  top: 65px;
+  width: 100%;
+  color: #173b64;
+  font-size: 23px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.instruction {
+  margin-top: 30px;
+  color: #c5e3ff;
+  font-size: 14px;
+}
+
+.roses {
+  margin-top: 35px;
+  font-size: 27px;
+}
+
+.cards {
+  display: none;
+  margin-top: 35px;
+  gap: 13px;
+  flex-direction: column;
+}
+
+.card-button {
+  padding: 17px;
+  background: #b9dcff;
+  border: 1px solid #e0f1ff;
+  border-radius: 12px;
+  color: #173b64;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.card-button:hover {
+  background: #d8ecff;
+}
+
+.letter {
+  display: none;
+  background: #d7eaff;
+  color: #173b64;
+  border-radius: 15px;
+  padding: 27px;
+  margin-top: 25px;
+  text-align: left;
+  line-height: 1.8;
+  box-shadow: 0 10px 35px #0006;
+}
+
+.letter h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.letter p {
+  white-space: pre-line;
+}
+
+.back {
+  display: block;
+  margin: 20px auto 0;
+  border: none;
+  background: #173b64;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.music {
+  margin-top: 35px;
+}
+
+.music button {
+  background: transparent;
+  border: 1px solid #b9dcff;
+  color: #d7eaff;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+footer {
+  margin-top: 35px;
+  color: #9fc9f0;
+  font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Para Ana Júlia 💙</h1>
+  <p class="subtitle">Uma pequena surpresa feita especialmente para você.</p>
+
+  <div class="envelope" id="envelope" onclick="openEnvelope()">
+    <div class="envelope-name">Ana Júlia</div>
+  </div>
+
+  <p class="instruction" id="instruction">
+    Toque no envelope para abrir sua surpresa.
+  </p>
+
+  <div class="roses">🩵 🌹 🩵 🌹 🩵</div>
+
+  <div class="cards" id="cards">
+    <button class="card-button" onclick="openLetter(1)">
+      💌 Carta 1 — O que você significa
+    </button>
+
+    <button class="card-button" onclick="openLetter(2)">
+      💙 Carta 2 — Meus sentimentos
+    </button>
+
+    <button class="card-button" onclick="openLetter(3)">
+      🌹 Carta 3 — Nosso futuro
+    </button>
+  </div>
+
+  <div class="letter" id="letter">
+    <h2 id="letterTitle"></h2>
+    <p id="letterText"></p>
+    <button class="back" onclick="closeLetter()">Voltar</button>
+  </div>
+
+  <div class="music">
+    <button onclick="playMusic()">
+      ♫ Ouvir nossa música
+    </button>
+    <p style="font-size:12px;margin-top:10px;color:#b9dcff">
+      Vem Ser Minha — Chorão
+    </p>
+  </div>
+
+  <footer>
+    Feito com carinho 💙
+  </footer>
+
+</div>
+
+<script>
+const letters = {
+  1: {
+    title: "O que você significa 💙",
+    text: `Ana Júlia,
+
+Talvez você nem imagine o quanto sua presença pode significar para alguém. Às vezes, uma pessoa chega de uma maneira simples e, aos poucos, começa a ocupar um espaço especial nos nossos pensamentos.
+
+Quero que saiba que você não é apenas mais uma pessoa que apareceu no meu caminho. Existe algo em você que me faz querer conhecer cada detalhe, compartilhar momentos e descobrir até onde essa conexão pode chegar.
+
+E se existe algo que quero fazer, é mostrar através das minhas atitudes que você é especial para mim.`
+  },
+
+  2: {
+    title: "Meus sentimentos 🌹",
+    text: `Ana Júlia,
+
+Não quero te prometer um mundo perfeito, porque sei que a vida não funciona assim. Mas quero poder oferecer sinceridade, carinho, respeito e vontade de fazer dar certo.
+
+Quero conhecer seus sonhos, entender seus medos, comemorar suas conquistas e estar presente nos momentos em que você precisar de alguém.
+
+Não quero que você precise adivinhar o que sinto. Quero demonstrar, nas pequenas atitudes, que minhas palavras são verdadeiras.
+
+Você merece ser tratada com carinho, e é assim que quero te tratar.`
+  },
+
+  3: {
+    title: "Uma história para construir 💌",
+    text: `Ana Júlia,
+
+Não sei exatamente o que o futuro reserva para nós, mas sei que gostaria de descobrir isso ao seu lado.
+
+Não quero apressar as coisas, nem construir algo baseado apenas em palavras bonitas. Quero que a gente tenha paciência, confiança e vontade de escolher um ao outro todos os dias.
+
+Quero construir lembranças, dar risadas por motivos bobos, compartilhar momentos simples e transformar pequenos instantes em grandes recordações.
+
+Se depender de mim, não vai faltar esforço para fazer essa história valer a pena.
+
+Com carinho,
+Samuel 💙`
+  }
+};
+
+function openEnvelope() {
+  document.getElementById("cards").style.display = "flex";
+  document.getElementById("instruction").textContent =
+    "Escolha uma das três cartas 💙";
+  document.getElementById("envelope").style.display = "none";
+}
+
+function openLetter(number) {
+  document.getElementById("cards").style.display = "none";
+  document.getElementById("letter").style.display = "block";
+
+  document.getElementById("letterTitle").textContent =
+    letters[number].title;
+
+  document.getElementById("letterText").textContent =
+    letters[number].text;
+}
+
+function closeLetter() {
+  document.getElementById("letter").style.display = "none";
+  document.getElementById("cards").style.display = "flex";
+}
+
+function playMusic() {
+  window.open(
+    "https://www.youtube.com/results?search_query=Vem+Ser+Minha+Chor%C3%A3o",
+    "_blank"
+  );
+}
+</script>
+
+</body>
+</html>
