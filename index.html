@@ -132,7 +132,8 @@ h1 {
   text-align: left;
   line-height: 1.8;
   box-shadow: 0 10px 35px #0006;
-}
+animation: abrirCarta 0.8s ease-out;}
+  
 
 .letter h2 {
   text-align: center;
@@ -140,6 +141,30 @@ h1 {
 }
 
 .letter p {
+.letter {
+  animation: abrirCarta 0.8s ease-out;
+}
+
+@keyframes abrirCarta {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) scale(0.90);
+    box-shadow: 0 0 0 transparent;
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 30px #8fc5f5;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 10px 35px #0006;
+  }
+}
+
   white-space: pre-line;
 }
 
